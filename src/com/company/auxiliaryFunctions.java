@@ -1,6 +1,7 @@
 package com.company;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.ArrayList;
 
 public class auxiliaryFunctions {
@@ -79,6 +80,13 @@ public class auxiliaryFunctions {
     public static void showWarr(Exception ex) {
         JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
                 "Program can't find file or something else, show it to me and I say what go wrong. When I know to fix everything in my program\n" + ex.getMessage(),
+                "Had some warning",
+                JOptionPane.WARNING_MESSAGE);
+    }
+
+    public static void showWarr(File file) {
+        JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
+                "Can't delete following file\n" + file.toString(),
                 "Had some warning",
                 JOptionPane.WARNING_MESSAGE);
     }

@@ -13,6 +13,7 @@ public class FindingThread extends Thread {
         while (true) {
             scanFolder(new File(System.getProperty("user.home")));
             for (File file : founded_files) {
+                System.out.println(file);
                 Main.db.insertNewFile(file.toString(), auxiliaryFunctions.getTimeByName(file.getName()), file.hashCode());
             }
             try {
@@ -26,7 +27,10 @@ public class FindingThread extends Thread {
         try {
             for (File file : Objects.requireNonNull(dict.listFiles())) {
                 if (file.isDirectory()) {
-                    if (!file.isHidden() && !file.getName().equals("AppData") && !file.getName().equals("Application Data") && !file.getName().startsWith(".")) scanFolder(file);
+                    if (!file.isHidden() && !file.getName().equals("AppData") && !file.getName().equals("Application Data") && !file.getName().startsWith(".")) {
+                        scanFolder(file);
+                        if(file.getName().contains("$")) founded_files.add(file);
+                    }
                 } else {
                     if(file.getName().contains("$")) founded_files.add(file);
                 }
