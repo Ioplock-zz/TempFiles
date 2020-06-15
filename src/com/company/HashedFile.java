@@ -6,11 +6,11 @@ import java.util.Objects;
 public class HashedFile {
 
     File file;
-    int hash;
+    int id;
 
-    public HashedFile(String path, int hash) {
+    public HashedFile(String path, int id) {
         this.file = new File(path);
-        this.hash = hash;
+        this.id = id;
     }
 
     public void delete() {
@@ -19,8 +19,6 @@ public class HashedFile {
                 if(!file.delete()) {
                     auxiliaryFunctions.showWarr(file);
                 }
-
-
         } else {
             try {
                 if(!file.delete()) {
@@ -30,7 +28,7 @@ public class HashedFile {
                 auxiliaryFunctions.showWarr(exception);
             }
         }
-        Main.db.deleteByHash(hash);
+        Main.db.deleteByID(id);
     }
 
     private void deleteFolder(File dict) {

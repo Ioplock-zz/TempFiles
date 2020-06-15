@@ -29,11 +29,11 @@ public class Files {
         getHashes();
     }
 
-    public void deleteByHash(int hash) {
-        String sql = "DELETE FROM files WHERE hash = ?";
+    public void deleteByID(int id) {
+        String sql = "DELETE FROM files WHERE id = ?";
         try{
             PreparedStatement psst = conn.prepareStatement(sql);
-            psst.setInt(1, hash);
+            psst.setInt(1, id);
             psst.executeUpdate();
         } catch (SQLException exception) {
             auxiliaryFunctions.showErr(exception);
@@ -73,14 +73,14 @@ public class Files {
 
     public ArrayList<HashedFile> getOldFiles() {
         ArrayList<HashedFile> files = new ArrayList<>();
-        String sql = "SELECT path, hash FROM files WHERE time < ?;"; //TODO: Получать hash для дальнейшего удаления записи из таблицы
+        String sql = "SELECT path, id FROM files WHERE time < ?;"; //TODO: Получать hash для дальнейшего удаления записи из таблицы
         try {
             PreparedStatement stmt  = conn.prepareStatement(sql);
             stmt.setInt(1, (int) (System.currentTimeMillis() / 1000));
             ResultSet rs  = stmt.executeQuery();
 
             while (rs.next()) {
-                files.add(new HashedFile(rs.getString("path"), rs.getInt("hash")));
+                files.add(new HashedFile(rs.getString("path"), rs.getInt("id")));
             }
         } catch (SQLException exception) {
             auxiliaryFunctions.showErr(exception);
