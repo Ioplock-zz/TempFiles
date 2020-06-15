@@ -1,5 +1,5 @@
 # TempFiles
-[Russian version](https://github.com/Maikliton/TempFiles/blob/master/README_RU.md)
+[Russian version](https://github.com/Maikliton/TempFiles/blob/master/README_RU.md)\n
 This script delete temp files named like "somename$20d.txt". This file will be deleted up to 20 days. The "$" sign is the trigger for the script, and only after it is time written
 ## Letters:
 - "d" - days
