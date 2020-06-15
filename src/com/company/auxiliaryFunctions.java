@@ -90,4 +90,11 @@ public class auxiliaryFunctions {
                 "Had some warning",
                 JOptionPane.WARNING_MESSAGE);
     }
+
+    public static void showStart() {
+        JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
+                "It's Perfect Working",
+                "All ok",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
 }

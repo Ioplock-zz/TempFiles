@@ -16,6 +16,7 @@ public class FindingThread extends Thread {
                 System.out.println(file);
                 Main.db.insertNewFile(file.toString(), auxiliaryFunctions.getTimeByName(file.getName()), file.hashCode());
             }
+            founded_files.clear();
             try {
                 //noinspection BusyWait
                 Thread.sleep(60000);

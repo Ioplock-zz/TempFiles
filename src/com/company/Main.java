@@ -10,6 +10,8 @@ public class Main {
         FindingThread thread = new FindingThread();
         thread.start();
 
+        auxiliaryFunctions.showStart();
+
         while (true) {
             for(HashedFile file : db.getOldFiles()) {
                 file.delete();
